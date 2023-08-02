@@ -1,5 +1,3 @@
-// pages/api/postMessage.js
-
 import { connectToDatabase } from '../../utils/mongodb';
 
 export default async function handler(req, res) {
@@ -7,14 +5,15 @@ export default async function handler(req, res) {
     return res.status(405).end();  // Method not allowed
   }
 
-  console.log('Received data:', req.body);
-
-  const { db } = await connectToDatabase();
+  const db = await connectToDatabase(process.env.MONGODB_URI);
 
   // Insert the new message into the database
-  const result = await db.collection('messages').insertOne(req.body);
-
-  console.log('Saved data result:', result);
-
+  const result = await db.collection('messages').insertOne({
+      id: req.body.id,
+      sender_username: req.body.sender_username,
+      created: req.body.created,
+      text: req.body.text
+      });
+  
   res.json({ message: 'Message saved', id: result.insertedId });
 }

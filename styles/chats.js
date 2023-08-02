@@ -3,7 +3,6 @@ export default {
     background: '#FFFFFF',
   },
   chatbox:{
-    position: 'relative',
     top: '0px',
     left: '0px',
   },

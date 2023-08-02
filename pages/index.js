@@ -31,7 +31,7 @@ function onSubmit(e) {
     <div style={styles.background}>
       <div style={styles.authContainer}>
         <form style={styles.authForm} onSubmit={(e) => onSubmit(e)}>
-          <div style={styles.authTitle}>NextJS Chat</div>
+          <div style={styles.authTitle}>SECOND</div>
 
               <input 
                 style={styles.textInput}

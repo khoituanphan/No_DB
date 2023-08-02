@@ -7,7 +7,7 @@ export default {
     left: '0px',
     width: 'calc(100vw - 200px)',
     height: 'calc(100vh - 200px)',
-    background: 'linear-gradient(150deg, #d9dbe2, #808aac 100%, #282d39 0)',
+    background: '#FFFFFF',
   },
   authContainer: {
     width: '420px',
