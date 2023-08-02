@@ -19,7 +19,7 @@ export default function Auth() {
 			.put(
 				'https://api.chatengine.io/users/',
 				{ username, secret },
-				{ headers: { 'Private-Key': '2d30e6b4-bc9b-4419-a61d-69ab57a8fb5a' } }
+				{ headers: { 'Private-Key': process.env.PRIVATE_KEY } }
 			)
 			.then((r) => {
 				router.push('/chats');
@@ -27,28 +27,33 @@ export default function Auth() {
 	}
 
 	return (
-		<div className={styles.background}>
-			<div className={styles.authContainer}>
-				<form className={styles.authForm} onSubmit={(e) => onSubmit(e)}>
-					<div className={styles.authTitle}>ARIS Chat</div>
+		<>
+			<head>
+				<title>ARIS Chat Login</title>
+			</head>
+			<div className={styles.background}>
+				<div className={styles.authContainer}>
+					<form className={styles.authForm} onSubmit={(e) => onSubmit(e)}>
+						<div className={styles.authTitle}>ARIS Chat</div>
 
-					<input
-						className={styles.textInput}
-						placeholder="Email:"
-						onChange={(e) => setUsername(e.target.value)}
-					/>
+						<input
+							className={styles.textInput}
+							placeholder="Email:"
+							onChange={(e) => setUsername(e.target.value)}
+						/>
 
-					<input
-						className={styles.textInput}
-						placeholder="Password:"
-						onChange={(e) => setSecret(e.target.value)}
-					/>
+						<input
+							className={styles.textInput}
+							placeholder="Password:"
+							onChange={(e) => setSecret(e.target.value)}
+						/>
 
-					<button type="submit" className={styles.submitButton}>
-						Login / Signup
-					</button>
-				</form>
+						<button type="submit" className={styles.submitButton}>
+							Login / Signup
+						</button>
+					</form>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }

@@ -4,10 +4,10 @@ import { ContextProvider } from '../context';
 
 export default function App({ Component, pageProps }) {
 	return (
-		<div>
+		<>
 			<ContextProvider>
 				<Component {...pageProps} />
 			</ContextProvider>
-		</div>
+		</>
 	);
 }

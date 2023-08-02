@@ -40,7 +40,10 @@ export default function Home() {
 	if (!showChat) return <div />;
 
 	return (
-		<div>
+		<>
+			<head>
+				<title>ARIS Chat Login</title>
+			</head>
 			<div
 				style={{
 					fontFamily: 'Satoshi',
@@ -48,7 +51,7 @@ export default function Home() {
 			>
 				<ChatEngine
 					height="calc(100vh - 212px)"
-					projectID="cf3629c6-c90a-4eed-b75c-212a6b54e1ec"
+					projectID={process.env.PROJECT_ID}
 					userName={username}
 					userSecret={secret}
 					renderNewMessageForm={() => <MessageFormSocial />}
@@ -70,6 +73,6 @@ export default function Home() {
 					Generate
 				</button>
 			</div>
-		</div>
+		</>
 	);
 }
