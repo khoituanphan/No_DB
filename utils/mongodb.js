@@ -1,18 +1,31 @@
-const { MongoClient } = require('mongodb');
+import { MongoClient } from 'mongodb';
 
-async function connectToDatabase() {
-    const client = new MongoClient(process.env.MONGODB_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    });
+let cached = global.mongo;
 
-    if (!client.isConnected()) await client.connect();
-    
-    const db = client.db('myFirstDatabase'); // the name of your database
+if (!cached) cached = global.mongo = {};
 
-    return { db, client };
+export async function connectToDatabase() {
+  if (cached.conn) {
+    return cached.conn;
+  }
+
+  if (!cached.promise) {
+    const conn = {};
+    const opts = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    };
+    cached.promise = MongoClient.connect(process.env.MONGODB_URI, opts)
+      .then((client) => {
+        conn.client = client;
+        return client.db(process.env.MONGODB_DB);
+      })
+      .then((db) => {
+        conn.db = db;
+        return conn;
+      });
+  }
+
+  cached.conn = await cached.promise;
+  return cached.conn;
 }
-
-module.exports = {
-    connectToDatabase,
-};
