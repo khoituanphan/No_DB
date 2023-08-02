@@ -1,0 +1,188 @@
+@use 'variables.scss';
+
+* {
+	font-family: 'Satoshi';
+}
+body {
+	background-color: #31343d;
+}
+::-webkit-scrollbar {
+	width: 0.4rem;
+}
+::-webkit-scrollbar-track {
+	background-color: #2a2b2e;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #9c9f73;
+	border: 1px solid #9c9f73;
+}
+
+.shadow {
+	box-shadow: 0 2px 15px rgb(0 0 0 / 68%);
+}
+
+/* Chat List */
+.ce-wrapper {
+	background-color: variables.$background;
+}
+
+.ce-chats-container {
+	background-color: variables.$background;
+	border-radius: 0px !important;
+}
+
+.ce-chat-form-container {
+	background-color: variables.$background;
+	color: white;
+}
+
+.ce-chat-card {
+	margin: 0px 6px !important;
+}
+
+.ce-chat-card-loading-bar {
+	background-color: #535a6d !important;
+}
+
+.ce-active-chat-card {
+	background-color: variables.$primary;
+}
+
+.ce-chat-title-text {
+	color: variables.$text;
+}
+
+.ce-chat-subtitle-text {
+	color: variables.$date-text;
+}
+
+.ce-chat-unread-dot {
+	background-color: variables.$text;
+}
+
+/* Chat Feed */
+
+.ce-chat-title-container {
+	background-color: variables.$background;
+	border-radius: 0px !important;
+}
+
+.ce-chat-feed-container {
+	background-color: variables.$background;
+}
+
+.ce-primary-button {
+	background-color: variables.$primary-light;
+}
+
+.ce-message-date-text {
+	color: variables.$date-text;
+}
+
+.ce-my-message-bubble {
+	background-color: variables.$primary;
+	margin-right: 8px;
+}
+
+.ce-my-message-sinding-bubble {
+	background-color: #938ffe !important;
+}
+
+.ce-my-message-timestamp {
+	color: variables.$primary-light;
+}
+
+.ce-their-message-timestamp {
+	margin-left: 8px;
+	color: variables.$date-text;
+}
+
+#ce-send-message-button {
+	background-color: variables.$primary-light;
+}
+
+#ce-ice-breaker-gif {
+	max-width: 115px !important;
+	margin-top: 30px !important;
+}
+
+.ce-social-message-form {
+	background-color: variables.$background;
+}
+
+.ce-message-input-form {
+	padding-bottom: 7px !important;
+	// border: 1px solid red !important;
+}
+
+#msg-textarea {
+	width: calc(100% - 140px) !important;
+	position: relative !important;
+	top: 4px !important;
+	border-width: 0px !important;
+	background-color: variables.$background;
+	color: variables.$text;
+	font-family: 'Satoshi' !important;
+}
+#msg-textarea::placeholder {
+	color: variables.$date-text;
+}
+
+#ce-upload-document-icon {
+	color: variables.$text;
+}
+
+.ce-feed-container-bottom {
+	height: '44px';
+}
+
+.ce-message-images-row {
+	background-color: variables.$background;
+}
+
+.ce-their-message-sender {
+	color: variables.$date-text;
+}
+
+.ce-their-message-bubble {
+	background-color: #535a6d !important;
+	color: rgba(255, 255, 255, 0.705) !important;
+}
+
+/* Chat Settings */
+
+.ce-settings {
+	background-color: variables.$background;
+	border-radius: 0px !important;
+}
+
+.ce-chat-title-form .ce-text-input {
+	background-color: #4a5162;
+	color: white;
+	margin: 16px 0;
+}
+
+.ce-section-title-container {
+	background-color: variables.$background;
+	color: white;
+}
+
+#ce-options-drop-down {
+	background-color: variables.$background;
+	color: white;
+}
+
+.ce-person-text {
+	color: hsla(0, 0%, 100%, 0.568);
+}
+
+.ce-danger-button {
+	background-color: variables.$background;
+	border: 1px solid variables.$primary-light;
+	color: variables.$primary-light;
+}
+
+.ce-autocomplete-close {
+	background-color: variables.$text;
+	border-radius: 0px !important;
+}

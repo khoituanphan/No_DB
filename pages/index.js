@@ -1,8 +1,8 @@
+import styles from '../styles/auth.module.css';
+
 import React, { useContext } from 'react';
 import { Context } from '../context';
 import { useRouter } from 'next/router';
-
-import styles from '../styles/auth.module.css';
 
 import axios from 'axios';
 
@@ -42,7 +42,6 @@ export default function Auth() {
 						className={styles.textInput}
 						placeholder="Password:"
 						onChange={(e) => setSecret(e.target.value)}
-						type="password"
 					/>
 
 					<button type="submit" className={styles.submitButton}>

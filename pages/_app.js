@@ -1,10 +1,10 @@
-import styles from '../styles/auth.module.css';
+import '../styles/globals.scss';
 
 import { ContextProvider } from '../context';
 
 export default function App({ Component, pageProps }) {
 	return (
-		<div className={styles.background}>
+		<div>
 			<ContextProvider>
 				<Component {...pageProps} />
 			</ContextProvider>
