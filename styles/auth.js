@@ -1,0 +1,60 @@
+// styles.js
+export default {
+  background: {
+    padding: '100px',
+    position: 'absolute',
+    top: '0px',
+    left: '0px',
+    width: 'calc(100vw - 200px)',
+    height: 'calc(100vh - 200px)',
+    background: 'linear-gradient(150deg, #d9dbe2, #808aac 100%, #282d39 0)',
+  },
+  authContainer: {
+    width: '420px',
+    height: '292px',
+    position: 'relative',
+    top: 'calc(50vh - 144px - 100px)',
+    left: 'calc(50vw - 240px - 100px)',
+    backgroundColor: '#4a5162',
+    borderRadius: '24px',
+    boxShadow: '0 2px 15px rgba(0, 0, 0, 0.68)',
+  },
+  authForm: {
+    paddingTop: '33px',
+    width: '60%',
+    marginLeft: '20%',
+  },
+  authTitle: {
+    paddingBottom: '20px',
+    width: '100%',
+    textAlign: 'center',
+    color: 'white',
+    fontSize: '26px',
+  },
+  textInput: {
+    width: '100%',
+    padding: '8px',
+    marginBottom: '24px',
+    backgroundColor: '#4a5162',
+    outline: 'none',
+    borderWidth: '0px',
+    borderBottom: '2px solid #726dfe',
+    color: 'white',
+  },
+  placeholder: {
+    color: 'hsla(0, 0%, 100%, 0.568)',
+  },
+  submitButton: {
+    width: '100%',
+    padding: '14px',
+    borderRadius: '4px',
+    borderWidth: '0px',
+    cursor: 'pointer',
+    backgroundColor: '#726dfe',
+    color: 'white',
+    outline: 'none',
+  },
+  submitButtonHover: {
+    backgroundColor: '#938ffe',
+  },
+};
