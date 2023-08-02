@@ -1,16 +1,13 @@
-import styles from '../styles/auth';
+import styles from '../styles/auth.module.css';
 
-import { ContextProvider } from '../context'
+import { ContextProvider } from '../context';
 
 export default function App({ Component, pageProps }) {
-  return (
-    <div style={styles.background}>
-
-
-      <ContextProvider>
-        <Component {...pageProps} />
-      </ContextProvider>
-
-    </div>
-  );
+	return (
+		<div className={styles.background}>
+			<ContextProvider>
+				<Component {...pageProps} />
+			</ContextProvider>
+		</div>
+	);
 }

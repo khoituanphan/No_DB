@@ -1,0 +1,130 @@
+.background {
+	background: #ffffff;
+}
+.chatbox {
+	position: relative;
+	top: 0px;
+	left: 0px;
+}
+.ceWrapper {
+	background-color: #4a5162;
+}
+.ceChatsContainer {
+	background-color: #4a5162;
+	border-radius: 0px;
+}
+.ceChatFormContainer {
+	background-color: #4a5162;
+	color: white;
+}
+.ceChatCard {
+	margin: 0px 6px;
+}
+.ceChatCardLoadingBar {
+	background-color: #535a6d;
+}
+.ceActiveChatCard {
+	background-color: #726dfe;
+}
+.ceChatTitleText {
+	color: white;
+}
+.ceChatSubtitleText {
+	color: hsla(0, 0%, 100%, 0.568);
+}
+.ceChatUnreadDot {
+	background-color: white;
+}
+.ceChatTitleContainer {
+	background-color: #4a5162;
+	border-radius: 0px;
+}
+.ceChatFeedContainer {
+	background-color: #4a5162;
+}
+.cePrimaryButton {
+	background-color: #9a97fc;
+}
+.ceMessageDateText {
+	color: hsla(0, 0%, 100%, 0.568);
+}
+.ceMyMessageBubble {
+	background-color: #726dfe;
+}
+.ceMyMessageSendingBubble {
+	background-color: #938ffe;
+}
+.ceMyMessageTimestamp {
+	color: #9a97fc;
+}
+.ceTheirMessageTimestamp {
+	color: hsla(0, 0%, 100%, 0.568);
+}
+.ceSendMessageBox {
+	background-color: #9a97fc;
+}
+.ceIceBreakerGif {
+	max-width: 115px;
+	margin-top: 30px;
+}
+.ceSocialMessageForm {
+	background-color: #4a5162;
+}
+.ceMessageInputForm {
+	padding-bottom: 10px;
+}
+.msgTextarea {
+	width: calc(100% - 140px);
+	position: relative;
+	top: 4px;
+	border-width: 0px;
+	background-color: #4a5162;
+	color: white;
+}
+.msgTextareaPlaceholder {
+	color: hsla(0, 0%, 100%, 0.568);
+}
+.ceUploadDocumentIcon {
+	color: white;
+}
+.ceFeedContainerBottom {
+	height: 44px;
+}
+.ceMessageImagesRow {
+	background-color: #4a5162;
+}
+.ceTheirMessageSender {
+	color: hsla(0, 0%, 100%, 0.568);
+}
+.ceTheirMessageBubble {
+	background-color: #535a6d;
+	color: rgba(255, 255, 255, 0.705);
+}
+.ceSettings {
+	background-color: #4a5162;
+	border-radius: 0px;
+}
+.ceChatTitleForm {
+	background-color: #4a5162;
+	color: white;
+}
+.ceSectionTitleContainer {
+	background-color: #4a5162;
+	color: white;
+}
+.ceOptionsDropDown {
+	background-color: #4a5162;
+	color: white;
+}
+.cePersonText {
+	color: hsla(0, 0%, 100%, 0.568);
+}
+.ceDangerButton {
+	background-color: #4a5162;
+	border: 1px solid #9a97fc;
+	color: #9a97fc;
+}
+.ceAutocompleteClose {
+	background-color: white;
+	border-radius: 0px;
+}
