@@ -4,6 +4,7 @@ import { Context } from '../../context';
 import {
 	Box,
 	Flex,
+	Form,
 	FormControl,
 	Button,
 	Input,
@@ -16,6 +17,7 @@ const AuthPage = () => {
 	const { username, setUsername, secret, setSecret } = useContext(Context);
 	const router = useRouter();
 	// console.log(process.env.PRIVATE_KEY);
+	const toast = useToast();
 
 	function onSubmit(e) {
 		e.preventDefault();
@@ -43,7 +45,6 @@ const AuthPage = () => {
 				});
 			});
 	}
-	const toast = useToast();
 
 	return (
 		<Flex
@@ -66,33 +67,45 @@ const AuthPage = () => {
 				<Text marginBottom="32px" fontSize="3xl" color="white">
 					ARIS Chat
 				</Text>
-				<Input
-					placeholder="Email"
-					onChange={(e) => setUsername(e.target.value)}
-					margin={'8px 0'}
-					width={'80%'}
-					color={'white'}
-					size={'lg'}
-				/>
-				<Input
-					placeholder="Password"
-					type="password"
-					onChange={(e) => setSecret(e.target.value)}
-					margin={'8px 0'}
-					width={'80%'}
-					color={'white'}
-					size={'lg'}
-				/>
 
-				<Button
-					type="submit"
-					onClick={(e) => onSubmit(e)}
-					// variant={'ghost.'}
-					colorScheme="gray"
-					marginTop="16px"
+				<form
+					onSubmit={(e) => onSubmit(e)}
+					style={{
+						width: '100%',
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
 				>
-					Login / Sign Up
-				</Button>
+					<Input
+						placeholder="Email"
+						onChange={(e) => setUsername(e.target.value)}
+						margin={'8px 0'}
+						width={'80%'}
+						color={'white'}
+						size={'lg'}
+					/>
+					<Input
+						placeholder="Password"
+						type="password"
+						onChange={(e) => setSecret(e.target.value)}
+						margin={'8px 0'}
+						width={'80%'}
+						color={'white'}
+						size={'lg'}
+					/>
+
+					<Button
+						type="submit"
+						onClick={(e) => onSubmit(e)}
+						// variant={'ghost.'}
+						colorScheme="gray"
+						marginTop="16px"
+					>
+						Login / Sign Up
+					</Button>
+				</form>
 			</Flex>
 		</Flex>
 	);

@@ -114,14 +114,14 @@ body {
 }
 
 .ce-message-input-form {
-	padding-bottom: 10px !important;
+	padding-bottom: 16px !important;
 	// border: 1px solid red !important;
 }
 
 #msg-textarea {
 	width: calc(100% - 140px) !important;
 	position: relative !important;
-	top: 4px !important;
+	// top: 4px !important;
 	border-width: 0px !important;
 	background-color: variables.$background;
 	color: variables.$text;

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import GenerateButton from '../generate/GenerateButton';
 import GenerateFrame from '../generate/GenerateFrame';
 import { useDisclosure } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
 
 const ChatEngine = dynamic(() =>
 	import('react-chat-engine').then((module) => module.ChatEngine)
@@ -13,40 +14,41 @@ const MessageFormSocial = dynamic(() =>
 	import('react-chat-engine').then((module) => module.MessageFormSocial)
 );
 
-const ChatList = dynamic(() =>
-	import('react-chat-engine').then((module) => module.ChatList)
-);
-
 const ChatForm = dynamic(() =>
 	import('react-chat-engine').then((module) => module.NewChatForm)
 );
 
-const CustomChatList = ({ chatAppState, onOpen }) => {
-	console.log('PROPS: ', chatAppState);
+const CustomChatForm = ({ creds, handleModalOpen }) => {
 	return (
-		<>
-			<ChatList {...chatAppState} />
-			<GenerateButton onClick={onOpen} />
-		</>
+		<Flex flexDirection={'column'}>
+			<ChatForm {...creds} />
+			<GenerateButton onClick={handleModalOpen}>Summarize</GenerateButton>
+		</Flex>
 	);
 };
 
-const CustomChatForm = (props) => {
-	return (
-		<>
-			<ChatForm {...props} />
-		</>
-	);
+const getChats = async (creds, setChatList) => {
+	const response = await fetch('https://api.chatengine.io/chats', {
+		method: 'GET',
+		headers: {
+			'Project-ID': creds.projectID,
+			'User-Name': creds.userName,
+			'User-Secret': creds.userSecret,
+		},
+	});
+	const json = await response.json();
+	// setChatList(json);
+	return json;
 };
 
 export default function ChatPage() {
-	const { username, secret } = useContext(Context);
+	const [chatsList, setChatList] = useState(null);
 	const [showChat, setShowChat] = useState(false);
-
-	const { isOpen, onOpen, onClose } = useDisclosure();
+	const { username, secret } = useContext(Context);
 
 	const router = useRouter();
-	const chatId = router.query.chatId;
+	const { isOpen, onOpen, onClose } = useDisclosure();
+
 	const handleClick = async () => {
 		const response = await fetch('/api/generateSum', {
 			method: 'POST',
@@ -56,36 +58,61 @@ export default function ChatPage() {
 	};
 
 	useEffect(() => {
-		if (typeof document !== 'undefined') {
-			setShowChat(true);
-		}
-	}, []);
-
-	useEffect(() => {
 		if (username === '' || secret === '') {
 			router.push('/');
 		}
 	}, [username, secret]);
 
-	if (!showChat) return <div />;
+	useEffect(() => {
+		if (typeof document !== 'undefined') {
+			setShowChat(true);
+		}
+	});
+
+	useEffect(() => {
+		if (!chatsList) {
+			const res = getChats({
+				projectID: 'cf3629c6-c90a-4eed-b75c-212a6b54e1ec',
+				userName: username,
+				userSecret: secret,
+			});
+			res
+				.then((response) => {
+					setChatList(response);
+				})
+				.catch((error) => {
+					console.error(error);
+				});
+		}
+	});
 
 	return (
 		<>
-			<div
-				style={{
-					fontFamily: 'Satoshi',
-				}}
-			>
-				<ChatEngine
-					height="100vh"
-					projectID={'cf3629c6-c90a-4eed-b75c-212a6b54e1ec'}
-					userName={username}
-					userSecret={secret}
-					renderNewMessageForm={() => <MessageFormSocial />}
-					renderNewChatForm={(creds) => <CustomChatForm {...creds} />}
-				/>
-			</div>
-			<GenerateFrame isOpen={isOpen} onClose={onClose} />
+			{showChat && (
+				<>
+					<div
+						style={{
+							fontFamily: 'Satoshi',
+						}}
+					>
+						<ChatEngine
+							height="100vh"
+							projectID={'cf3629c6-c90a-4eed-b75c-212a6b54e1ec'}
+							userName={username}
+							userSecret={secret}
+							renderNewMessageForm={() => <MessageFormSocial />}
+							renderNewChatForm={(creds) => (
+								<CustomChatForm creds={creds} handleModalOpen={onOpen} />
+							)}
+						/>
+					</div>
+					<GenerateFrame
+						isOpen={isOpen}
+						onClose={onClose}
+						chatsList={chatsList}
+					/>
+				</>
+			)}
 		</>
 	);
 }
