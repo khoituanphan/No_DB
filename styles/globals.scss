@@ -99,6 +99,9 @@ body {
 
 #ce-send-message-button {
 	background-color: variables.$primary-light;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
 }
 
 #ce-ice-breaker-gif {
@@ -111,7 +114,7 @@ body {
 }
 
 .ce-message-input-form {
-	padding-bottom: 7px !important;
+	padding-bottom: 10px !important;
 	// border: 1px solid red !important;
 }
 
