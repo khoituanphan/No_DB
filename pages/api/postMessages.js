@@ -5,7 +5,8 @@ export default async function handler(req, res) {
 		return res.status(405).end(); // Method not allowed
 	}
 
-	const db = await connectToDatabase(process.env.MONGODB_URI);
+	const client = await clientPromise;
+	const db = await client.db();
 
 	// Insert the new message into the database
 	const result = await db.collection('messages').insertOne({

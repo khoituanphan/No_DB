@@ -44,17 +44,27 @@ const getChats = async (creds, setChatList) => {
 export default function ChatPage() {
 	const [chatsList, setChatList] = useState(null);
 	const [showChat, setShowChat] = useState(false);
+	const [loading, setLoading] = useState(false);
+
+	const [returnedData, setReturnedData] = useState(null); // [ { chatID: 1, summary: 'blah blah blah' }, ...
 	const { username, secret } = useContext(Context);
 
 	const router = useRouter();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const handleClick = async () => {
+	const generateSummary = async () => {
+		setLoading(true);
 		const response = await fetch('/api/generateSum', {
 			method: 'POST',
 		});
+		// TODO: add body and get data from chatengine
 		const json = await response.json();
+
+		setReturnedData(json);
+		setLoading(false);
+
 		console.log('RESULT: ', json);
+		// return json;
 	};
 
 	useEffect(() => {
@@ -110,6 +120,8 @@ export default function ChatPage() {
 						isOpen={isOpen}
 						onClose={onClose}
 						chatsList={chatsList}
+						generateSummary={generateSummary}
+						loading={loading}
 					/>
 				</>
 			)}
