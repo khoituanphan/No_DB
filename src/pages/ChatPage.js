@@ -49,12 +49,8 @@ export default function ChatPage() {
 	const router = useRouter();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-<<<<<<< Updated upstream
-	const handleClick = async () => {
-=======
 	const generateSummary = async (chatId, numMessages) => {
 		setLoading(true);
->>>>>>> Stashed changes
 		const response = await fetch('/api/generateSum', {
 			method: 'POST',
 			headers: {
@@ -69,11 +65,8 @@ export default function ChatPage() {
 			}),
 		});
 		const json = await response.json();
-<<<<<<< Updated upstream
-=======
 		setReturnedData(json);
 		setLoading(false);
->>>>>>> Stashed changes
 		console.log('RESULT: ', json);
 	};
 	

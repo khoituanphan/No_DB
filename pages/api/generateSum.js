@@ -1,22 +1,6 @@
 import { Configuration, OpenAIApi } from 'openai';
 
 export default async function handler(req, res) {
-<<<<<<< Updated upstream
-	const config = new Configuration({
-		apiKey: process.env.OPENAI_API_KEY,
-	});
-	const openai = new OpenAIApi(config);
-
-	const response = await openai.createCompletion({
-		model: 'text-davinci-003',
-		temperature: 0,
-		max_tokens: 2000,
-		prompt: 'Generate a bog post about dog',
-	});
-	console.log('response: ', response);
-
-	res.status(200).json({ post: response.data.choices });
-=======
     if (req.method !== 'POST') {
         return res.status(405).end();
     }
@@ -55,7 +39,7 @@ export default async function handler(req, res) {
     const responseOA = await openai.createCompletion({
         model: 'text-davinci-003',
         temperature: 0,
-        max_tokens: 2000,
+        max_tokens: 8000,
         prompt: promptContent,
     });
 
@@ -64,5 +48,4 @@ export default async function handler(req, res) {
         chatId: chatId,
         summary: responseOA.data.choices[0].text.trim()
     });
->>>>>>> Stashed changes
 }
