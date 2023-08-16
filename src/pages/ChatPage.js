@@ -49,13 +49,34 @@ export default function ChatPage() {
 	const router = useRouter();
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
+<<<<<<< Updated upstream
 	const handleClick = async () => {
+=======
+	const generateSummary = async (chatId, numMessages) => {
+		setLoading(true);
+>>>>>>> Stashed changes
 		const response = await fetch('/api/generateSum', {
 			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				chatId, 
+				numMessages, 
+				projectID: 'cf3629c6-c90a-4eed-b75c-212a6b54e1ec',
+				userName: username,
+				userSecret: secret,
+			}),
 		});
 		const json = await response.json();
+<<<<<<< Updated upstream
+=======
+		setReturnedData(json);
+		setLoading(false);
+>>>>>>> Stashed changes
 		console.log('RESULT: ', json);
 	};
+	
 
 	useEffect(() => {
 		if (username === '' || secret === '') {
@@ -78,6 +99,7 @@ export default function ChatPage() {
 			});
 			res
 				.then((response) => {
+					console.log('Chats Data:', response);
 					setChatList(response);
 				})
 				.catch((error) => {
