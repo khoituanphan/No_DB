@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     const chatContent = latestMessages;
 
     // Craft the prompt for OpenAI
-    const promptContent = `Summarize the following chat content and show everything in it:\n\n${chatContent}\n`;
+    const promptContent = `Summarize the following chat content:\n\n${chatContent}\n`;
 
     const config = new Configuration({
         apiKey: process.env.OPENAI_KEY,

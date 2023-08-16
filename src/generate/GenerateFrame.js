@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import {
   Modal,
   ModalOverlay,
@@ -22,6 +20,8 @@ import {
   CircularProgress,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import React, { useState } from 'react';
+
 
 const LoadingOverlay = () => {
   return (
@@ -48,7 +48,6 @@ const GenerateFrame = ({
   console.log("chatsList: ", chatsList);
   const [chat, setChat] = useState(null);
   const [numMessages, setNumMessages] = useState(5);
-
   const postMessages = async () => {
     const data = {
       chat_id: chat,
@@ -99,25 +98,6 @@ const GenerateFrame = ({
                 </option>
               ))}
             </Select>
-
-            {/* <Select
-							// color="white"
-							id="chat-select"
-							onChange={(e) => setChat(e.target.value)}
-							width={'300px'}
-						>
-							{chatsList?.map((chat) => (
-								<option
-									value={chat}
-									style={{
-										color: 'black',
-										backgroundColor: 'white',
-									}}
-								>
-									{chat.id}
-								</option>
-							))}
-						</Select> */}
           </Flex>
 
           <Flex height="60px" alignItems={"center"}>
