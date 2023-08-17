@@ -122,6 +122,7 @@ export default function ChatPage() {
 						chatsList={chatsList}
 						generateSummary={generateSummary}
 						loading={loading}
+						returnedData={returnedData}
 					/>
 				</>
 			)}

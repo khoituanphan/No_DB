@@ -38,12 +38,17 @@ const LoadingOverlay = () => {
 	);
 };
 
+const GeneratedText = ({ returnedData }) => {
+	return <Flex flexDirection={'column'}></Flex>;
+};
+
 const GenerateFrame = ({
 	isOpen,
 	onClose,
 	chatsList,
 	generateSummary,
 	loading,
+	returnedData,
 }) => {
 	console.log('chatsList: ', chatsList);
 	const [chat, setChat] = useState(null);
@@ -109,8 +114,8 @@ const GenerateFrame = ({
 							Input the number of messages you want to summarize:
 						</FormLabel>
 						<NumberInput
-							defaultValue={5}
-							min={1}
+							defaultValue={50}
+							min={10}
 							max={200}
 							isDisabled={loading}
 						>
@@ -121,19 +126,22 @@ const GenerateFrame = ({
 							</NumberInputStepper>
 						</NumberInput>
 					</Flex>
+					{/* {returnedData ? : null} */}
+					<Flex></Flex>
 				</ModalBody>
-
-				<ModalFooter>
-					<Button
-						bg="#726dfe"
-						onClick={() => generateSummary()}
-						color={'white'}
-						isDisabled={loading}
-					>
-						Generate
-					</Button>
-					{/* <Button onClick={() => postMessages()}>Post Message</Button> */}
-				</ModalFooter>
+				{returnedData ? null : (
+					<ModalFooter>
+						<Button
+							bg="#726dfe"
+							onClick={() => generateSummary()}
+							color={'white'}
+							isDisabled={loading}
+						>
+							Generate
+						</Button>
+						{/* <Button onClick={() => postMessages()}>Post Message</Button> */}
+					</ModalFooter>
+				)}
 			</ModalContent>
 		</Modal>
 	);
