@@ -36,7 +36,9 @@ export default async function handler(req, res) {
   const chatContent = latestMessages;
 
     // Format the output
-    const promptContent = `Summarize the following chat content, translate to english and list out what need to be done by whom according to this format :\nUser: \nWhat needed to be done: \nDeadline:\n\n${chatContent}\n`;
+    const promptContent = ` \n\n${chatContent}\n Summary then identify 
+    \nPIC|WORK|DEADLINE
+    `;
 
 
     const config = new Configuration({

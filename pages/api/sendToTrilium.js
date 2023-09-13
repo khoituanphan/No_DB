@@ -12,12 +12,17 @@ export async function sendToTrilium(summaryText) {
         'Authorization': `Basic ${basicAuthToken}`
     };
 
+    // Convert your summaryText into a markdown table
+    const table = summaryText.split('\n').map(line => '| ' + line.slice(2).split(' | ').join(' | ') + ' |').join('\n');
+    const tableHeader = '| Column 1 | Column 2 | Column 3 |\n| --- | --- | --- |\n';
+    const tableMarkdown = tableHeader + table;
+
     const payload = {
         parentNoteId: 'root',
         title: 'Summary Task',
-        content: summaryText,
+        content: tableMarkdown,
         type: 'text',
-        mime: 'text/plain'
+        mime: 'text/markdown'
     };
 
     try {
