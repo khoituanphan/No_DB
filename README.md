@@ -29,3 +29,10 @@ The project has been deleted so those keys won't work anymore.
 ### `yarn dev`
 
 Install everything with `yarn` then run `yarn dev` to get up and running.
+
+Setup the .env file:
+    
+MONGODB_URI=mongodb+srv://arisworktech:PxwNG5515kwyLWrb@cluster0.fi2knov.mongodb.net/?retryWrites=true&w=majority
+OPENAI_KEY=
+TRILIUM_API_ENDPOINT=http://127.0.0.1:8080/etapi/create-note
+TRILIUM_API_TOKEN=
