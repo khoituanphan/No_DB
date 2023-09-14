@@ -12,18 +12,15 @@ export async function sendToTrilium(summaryText) {
         'Authorization': `Basic ${basicAuthToken}`
     };
 
-    // Convert your summaryText into a markdown table
-    const table = summaryText.split('\n').map(line => '| ' + line.slice(2).split(' | ').join(' | ') + ' |').join('\n');
-    const tableHeader = '| Column 1 | Column 2 | Column 3 |\n| --- | --- | --- |\n';
-    const tableMarkdown = tableHeader + table;
+    // Convert your summaryText into a list format
+    const list = summaryText.split('\n').map(line => line.replace(' | ', ' - ')).join('\n');
 
     const payload = {
-        parentNoteId: 'root',
+        secret: 'secret-password',
         title: 'Summary Task',
-        content: tableMarkdown,
-        type: 'text',
-        mime: 'text/markdown'
+        rawContent: list
     };
+    
 
     try {
         const response = await fetch(TRILIUM_API_ENDPOINT, {
